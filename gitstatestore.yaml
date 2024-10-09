@@ -1,0 +1,23 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: gitlab-credentials
+  namespace: default
+type: Opaque
+data:
+  username: dmlzYWxpc2hhbGluaQ==
+  password: Z2xwYXQtd2Y0OHoyUFhHS3lnQmdGSGRnZVk=
+---
+apiVersion: platform.kratix.io/v1alpha1
+kind: GitStateStore
+metadata:
+  name: default
+  namespace: default
+spec:
+  path: EC2
+  branch: main
+  secretRef:
+    name: gitlab-credentials
+    namespace: default
+  url: https://gitlab.com/visalishalini/testtfe
